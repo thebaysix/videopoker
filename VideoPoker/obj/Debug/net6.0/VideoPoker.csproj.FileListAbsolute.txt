@@ -1,0 +1,15 @@
+C:\Code\VideoPoker\VideoPoker\bin\Debug\net6.0\VideoPoker.exe
+C:\Code\VideoPoker\VideoPoker\bin\Debug\net6.0\VideoPoker.deps.json
+C:\Code\VideoPoker\VideoPoker\bin\Debug\net6.0\VideoPoker.runtimeconfig.json
+C:\Code\VideoPoker\VideoPoker\bin\Debug\net6.0\VideoPoker.dll
+C:\Code\VideoPoker\VideoPoker\bin\Debug\net6.0\VideoPoker.pdb
+C:\Code\VideoPoker\VideoPoker\obj\Debug\net6.0\VideoPoker.csproj.AssemblyReference.cache
+C:\Code\VideoPoker\VideoPoker\obj\Debug\net6.0\VideoPoker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\VideoPoker\VideoPoker\obj\Debug\net6.0\VideoPoker.AssemblyInfoInputs.cache
+C:\Code\VideoPoker\VideoPoker\obj\Debug\net6.0\VideoPoker.AssemblyInfo.cs
+C:\Code\VideoPoker\VideoPoker\obj\Debug\net6.0\VideoPoker.csproj.CoreCompileInputs.cache
+C:\Code\VideoPoker\VideoPoker\obj\Debug\net6.0\VideoPoker.dll
+C:\Code\VideoPoker\VideoPoker\obj\Debug\net6.0\refint\VideoPoker.dll
+C:\Code\VideoPoker\VideoPoker\obj\Debug\net6.0\VideoPoker.pdb
+C:\Code\VideoPoker\VideoPoker\obj\Debug\net6.0\VideoPoker.genruntimeconfig.cache
+C:\Code\VideoPoker\VideoPoker\obj\Debug\net6.0\ref\VideoPoker.dll

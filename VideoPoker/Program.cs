@@ -170,6 +170,9 @@ while (true)
         double rateOfReturn = ((double) income) / ((double) cost);
         ConsoleHelper.WriteLine($"RoR   : {rateOfReturn}", mode, isScore: true);
         ConsoleHelper.WriteLine("------------------------------", mode, isScore: true);
+
+        if (itrCount == 100_000_000)
+            break;
     }
 
     ConsoleHelper.WriteLine("------------------------------", mode);

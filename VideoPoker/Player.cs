@@ -182,8 +182,8 @@ namespace VideoPoker
                 return holds;
 
             // 4 to an inside straight, 3 hc |EXCEPTION C| (don't return right away, need to check 3 to a straight flush (type 2))
-            bool[] holds4ToIS;
-            bool is4ToIS3HC = hand.Get4ToIS(out holds4ToIS, highCardTarget: 3);
+            bool[] holds4ToIS3HC;
+            bool is4ToIS3HC = hand.Get4ToIS(out holds4ToIS3HC, highCardTarget: 3);
 
             // 3 to a straight flush (type 2)
             bool threeToSFType2SpreadFiveWithOneHC;
@@ -217,10 +217,14 @@ namespace VideoPoker
                     // In the EXCEPTION C Scenario, fall through to 3ToSF.
                     // Otherwise, stick with the 4 to the inside straight.
                     if (hand.Cards.Any(cardIsStraightPenaltyCard))
-                        return holds4ToIS;
+                        return holds4ToIS3HC;
                 }
 
                 return holds3ToSF;
+            }
+            else if (is4ToIS3HC)
+            {
+                return holds4ToIS3HC;
             }
 
             // JQK

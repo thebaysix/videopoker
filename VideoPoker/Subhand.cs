@@ -227,73 +227,74 @@ namespace VideoPoker
                         (Has(Rank.Eight) && Has(Rank.Ten) && Has(Rank.Queen)) ||
                         (Has(Rank.Nine) && Has(Rank.Ten) && Has(Rank.King));
 
-                    // In the 32SFT2S5W1HC scenario, we need to know the lowestRank and the oscRank as well.
-                    if ((Has(Rank.Ace) && Has(Rank.Two) && Has(Rank.Five)) ||
-                        (Has(Rank.Ace) && Has(Rank.Three) && Has(Rank.Five)) ||
-                        (Has(Rank.Ace) && Has(Rank.Four) && Has(Rank.Five)))
+                    if (threeToSFType2SpreadFiveWithOneHC)
                     {
-                        lowestRank = Rank.Ace;
-                        if (Has(Rank.Two))
-                            oscRank = Rank.Two;
-                        else if (Has(Rank.Three))
-                            oscRank = Rank.Three;
-                        else
-                            oscRank = Rank.Four;
-                    }
+                        // In the 32SFT2S5W1HC scenario, we need to know the lowestRank and the oscRank as well.
+                        if ((Has(Rank.Ace) && Has(Rank.Two) && Has(Rank.Five)) ||
+                            (Has(Rank.Ace) && Has(Rank.Three) && Has(Rank.Five)) ||
+                            (Has(Rank.Ace) && Has(Rank.Four) && Has(Rank.Five)))
+                        {
+                            lowestRank = Rank.Ace;
+                            if (Has(Rank.Two))
+                                oscRank = Rank.Two;
+                            else if (Has(Rank.Three))
+                                oscRank = Rank.Three;
+                            else
+                                oscRank = Rank.Four;
+                        }
 
-                    if ((Has(Rank.Seven) && Has(Rank.Eight) && Has(Rank.Jack)) ||
-                        (Has(Rank.Seven) && Has(Rank.Nine) && Has(Rank.Jack)) ||
-                        (Has(Rank.Seven) && Has(Rank.Ten) && Has(Rank.Jack)))
-                    {
-                        lowestRank = Rank.Seven;
-                        if (Has(Rank.Eight))
-                            oscRank = Rank.Eight;
-                        else if (Has(Rank.Nine))
-                            oscRank = Rank.Nine;
-                        else
+                        if ((Has(Rank.Seven) && Has(Rank.Eight) && Has(Rank.Jack)) ||
+                            (Has(Rank.Seven) && Has(Rank.Nine) && Has(Rank.Jack)) ||
+                            (Has(Rank.Seven) && Has(Rank.Ten) && Has(Rank.Jack)))
+                        {
+                            lowestRank = Rank.Seven;
+                            if (Has(Rank.Eight))
+                                oscRank = Rank.Eight;
+                            else if (Has(Rank.Nine))
+                                oscRank = Rank.Nine;
+                            else
+                                oscRank = Rank.Ten;
+                        }
+
+                        if ((Has(Rank.Eight) && Has(Rank.Nine) && Has(Rank.Queen)) ||
+                            (Has(Rank.Eight) && Has(Rank.Ten) && Has(Rank.Queen)))
+                        {
+                            lowestRank = Rank.Eight;
+                            if (Has(Rank.Nine))
+                                oscRank = Rank.Nine;
+                            else
+                                oscRank = Rank.Ten;
+                        }
+
+                        if ((Has(Rank.Nine) && Has(Rank.Ten) && Has(Rank.King)))
+                        {
+                            lowestRank = Rank.Nine;
                             oscRank = Rank.Ten;
-                    }
+                        }
 
-                    if ((Has(Rank.Eight) && Has(Rank.Nine) && Has(Rank.Queen)) ||
-                        (Has(Rank.Eight) && Has(Rank.Ten) && Has(Rank.Queen)))
+                        return true;
+                    }
+                    else
                     {
-                        lowestRank = Rank.Eight;
-                        if (Has(Rank.Nine))
-                            oscRank = Rank.Nine;
-                        else
-                            oscRank = Rank.Ten;
+                        // Check for non-SpreadFiveWithOneHC cases
+                        return
+                            ((Has(Rank.Ace) && Has(Rank.Two) && Has(Rank.Three)) ||
+                            (Has(Rank.Ace) && Has(Rank.Two) && Has(Rank.Four)) ||
+                            (Has(Rank.Ace) && Has(Rank.Three) && Has(Rank.Four)) ||
+                            (Has(Rank.Two) && Has(Rank.Three) && Has(Rank.Four)) ||
+                            (Has(Rank.Two) && Has(Rank.Three) && Has(Rank.Five)) ||
+                            (Has(Rank.Two) && Has(Rank.Four) && Has(Rank.Six)) ||
+                            (Has(Rank.Three) && Has(Rank.Four) && Has(Rank.Six)) ||
+                            (Has(Rank.Three) && Has(Rank.Five) && Has(Rank.Six)) ||
+                            (Has(Rank.Four) && Has(Rank.Five) && Has(Rank.Seven)) ||
+                            (Has(Rank.Four) && Has(Rank.Six) && Has(Rank.Seven)) ||
+                            (Has(Rank.Five) && Has(Rank.Six) && Has(Rank.Eight)) ||
+                            (Has(Rank.Five) && Has(Rank.Seven) && Has(Rank.Eight)) ||
+                            (Has(Rank.Six) && Has(Rank.Seven) && Has(Rank.Nine)) ||
+                            (Has(Rank.Six) && Has(Rank.Eight) && Has(Rank.Nine)) ||
+                            (Has(Rank.Seven) && Has(Rank.Eight) && Has(Rank.Ten)) ||
+                            (Has(Rank.Seven) && Has(Rank.Nine) && Has(Rank.Ten)));
                     }
-
-                    if ((Has(Rank.Nine) && Has(Rank.Ten) && Has(Rank.King)))
-                    {
-                        lowestRank = Rank.Nine;
-                        oscRank = Rank.Ten;
-                    }
-
-                    return
-                        ((Has(Rank.Ace) && Has(Rank.Two) && Has(Rank.Three)) ||
-                        (Has(Rank.Ace) && Has(Rank.Two) && Has(Rank.Four)) ||
-                        (Has(Rank.Ace) && Has(Rank.Two) && Has(Rank.Five)) ||
-                        (Has(Rank.Ace) && Has(Rank.Three) && Has(Rank.Four)) ||
-                        (Has(Rank.Ace) && Has(Rank.Three) && Has(Rank.Five)) ||
-                        (Has(Rank.Ace) && Has(Rank.Four) && Has(Rank.Five)) ||
-                        (Has(Rank.Two) && Has(Rank.Three) && Has(Rank.Four)) ||
-                        (Has(Rank.Two) && Has(Rank.Three) && Has(Rank.Five)) ||
-                        (Has(Rank.Two) && Has(Rank.Four) && Has(Rank.Six)) ||
-                        (Has(Rank.Four) && Has(Rank.Five) && Has(Rank.Seven)) ||
-                        (Has(Rank.Four) && Has(Rank.Six) && Has(Rank.Seven)) ||
-                        (Has(Rank.Five) && Has(Rank.Six) && Has(Rank.Eight)) ||
-                        (Has(Rank.Five) && Has(Rank.Seven) && Has(Rank.Eight)) ||
-                        (Has(Rank.Six) && Has(Rank.Seven) && Has(Rank.Nine)) ||
-                        (Has(Rank.Six) && Has(Rank.Eight) && Has(Rank.Nine)) ||
-                        (Has(Rank.Seven) && Has(Rank.Eight) && Has(Rank.Ten)) ||
-                        (Has(Rank.Seven) && Has(Rank.Eight) && Has(Rank.Jack)) ||
-                        (Has(Rank.Seven) && Has(Rank.Nine) && Has(Rank.Ten)) ||
-                        (Has(Rank.Seven) && Has(Rank.Nine) && Has(Rank.Jack)) ||
-                        (Has(Rank.Seven) && Has(Rank.Ten) && Has(Rank.Jack)) ||
-                        (Has(Rank.Eight) && Has(Rank.Nine) && Has(Rank.Queen)) ||
-                        (Has(Rank.Eight) && Has(Rank.Ten) && Has(Rank.Queen)) ||
-                        (Has(Rank.Nine) && Has(Rank.Ten) && Has(Rank.King)));
                 }
                 else if (type == StraightFlushType.T3)
                 {

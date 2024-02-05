@@ -338,7 +338,7 @@ namespace VideoPoker
         }
         public bool IsUnsuitedRanks(Rank r1, Rank r2, Rank r3)
         {
-            return this.Cards.Length == 2 && Has(r1) && Has(r2) && Has(r3);
+            return this.Cards.Length == 3 && Has(r1) && Has(r2) && Has(r3);
         }
 
         public bool IsUnsuitedRanks(Rank r1, Rank r2)

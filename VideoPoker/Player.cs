@@ -121,6 +121,11 @@ namespace VideoPoker
 
                 return holds;
             }
+            else if (isTenAce3RF)
+            {
+                // No four to a flush, so if we had a TenAce3RF take that.
+                return holds3ToRF;
+            }
 
             // Unsuited TJQK (a.k.a. 4 to an outside straight (3 hc))
             if (hand.GetUnsuitedTJQK(out holds))
@@ -224,6 +229,7 @@ namespace VideoPoker
             }
             else if (is4ToIS3HC)
             {
+                // No 3ToSF so if we have 4 to IS3HC take that.
                 return holds4ToIS3HC;
             }
 

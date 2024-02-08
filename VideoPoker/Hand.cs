@@ -300,250 +300,234 @@ namespace VideoPoker
 
         public bool Get3ToRF(out bool[] holds, out bool isTenAce3RF, out int suit, out Rank orcRank)
         {
-            isTenAce3RF = false;
-            suit = -1;
-            orcRank = Rank.Two; // Some default
-
-            Subhand? subhand3ToRF = null;
             foreach (Subhand subhand in this.ThreeCardCombos.Value)
             {
                 if (subhand.IsNToRoyalFlush(out isTenAce3RF, out suit, out orcRank))
                 {
-                    subhand3ToRF = subhand;
-                    break;
+                    holds = subhand.Holds;
+                    return true;
                 }
             }
 
-            holds = subhand3ToRF != null ? subhand3ToRF.Holds : DefaultHolds;
-            return subhand3ToRF != null;
+            isTenAce3RF = false;
+            suit = -1;
+            orcRank = Rank.Two; // Some default
+            holds = DefaultHolds;
+            return false;
         }
 
         public bool Get4ToSF(out bool[] holds)
         {
-            Subhand? subhand4ToSF = null;
             foreach (Subhand subhand in this.FourCardCombos.Value)
             {
                 if (subhand.IsNToStraightFlush(out _, out _, out _))
                 {
-                    subhand4ToSF = subhand;
-                    break;
+                    holds = subhand.Holds;
+                    return true;
                 }
             }
 
-            holds = subhand4ToSF != null ? subhand4ToSF.Holds : DefaultHolds;
-            return subhand4ToSF != null;
+            holds = DefaultHolds;
+            return false;
         }
 
         public bool Get3ToSF(out bool[] holds, out bool threeToSFType2SpreadFiveWithOneHC, out Rank lowestRank, out Rank oscRank, StraightFlushType type)
         {
-            lowestRank = Rank.Two; // Some default
-            oscRank = Rank.Two; // Some default
-            threeToSFType2SpreadFiveWithOneHC = false;
-            Subhand? subhand3ToSF = null;
             foreach (Subhand subhand in this.ThreeCardCombos.Value)
             {
                 if (subhand.IsNToStraightFlush(out threeToSFType2SpreadFiveWithOneHC, out lowestRank, out oscRank, type))
                 {
-                    subhand3ToSF = subhand;
-                    break;
+                    holds = subhand.Holds;
+                    return true;
                 }
             }
 
-            holds = subhand3ToSF != null ? subhand3ToSF.Holds : DefaultHolds;
-            return subhand3ToSF != null;
+            lowestRank = Rank.Two; // Some default
+            oscRank = Rank.Two; // Some default
+            threeToSFType2SpreadFiveWithOneHC = false;
+            holds = DefaultHolds;
+            return false;
         }
 
         public bool Get4ToF(out bool[] holds)
         {
-            Subhand? subhandF = null;
             foreach (Subhand subhand in this.FourCardCombos.Value)
             {
                 if (subhand.IsAllSameSuit())
                 {
-                    subhandF = subhand;
-                    break;
+                    holds = subhand.Holds;
+                    return true;
                 }
             }
 
-            holds = subhandF != null ? subhandF.Holds : DefaultHolds;
-            return subhandF != null;
+            holds = DefaultHolds;
+            return false;
         }
 
         public bool Get3oK(out bool[] holds)
         {
-            Subhand? subhand3oK = null;
             foreach (Subhand subhand in this.ThreeCardCombos.Value)
             {
                 if (subhand.IsThreeOfAKind())
                 {
-                    subhand3oK = subhand;
-                    break;
+                    holds = subhand.Holds;
+                    return true;
                 }
             }
 
-            holds = subhand3oK != null ? subhand3oK.Holds : DefaultHolds;
-            return subhand3oK != null;
+            holds = DefaultHolds;
+            return false;
         }
 
         public bool GetTwoPair(out bool[] holds)
         {
-            Subhand? subhandTwoPair = null;
             foreach (Subhand subhand in this.FourCardCombos.Value)
             {
                 if (subhand.IsTwoPair())
                 {
-                    subhandTwoPair = subhand;
-                    break;
+                    holds = subhand.Holds;
+                    return true;
                 }
             }
 
-            holds = subhandTwoPair != null ? subhandTwoPair.Holds : DefaultHolds;
-            return subhandTwoPair != null;
+            holds = DefaultHolds;
+            return false;
         }
 
         public bool GetJoB(out bool[] holds)
         {
-            Subhand? subhandJoB = null;
             foreach (Subhand subhand in this.TwoCardCombos.Value)
             {
                 if (subhand.IsJacksOrBetter())
                 {
-                    subhandJoB = subhand;
-                    break;
+                    holds = subhand.Holds;
+                    return true;
                 }
             }
 
-            holds = subhandJoB != null ? subhandJoB.Holds : DefaultHolds;
-            return subhandJoB != null;
+            holds = DefaultHolds;
+            return false;
         }
 
         public bool GetUnsuitedTJQK(out bool[] holds)
         {
-            Subhand? subhandUnsuitedTJQK = null;
             foreach (Subhand subhand in this.FourCardCombos.Value)
             {
                 if (subhand.IsUnsuitedTJQK())
                 {
-                    subhandUnsuitedTJQK = subhand;
-                    break;
+                    holds = subhand.Holds;
+                    return true;
                 }
             }
 
-            holds = subhandUnsuitedTJQK != null ? subhandUnsuitedTJQK.Holds : DefaultHolds;
-            return subhandUnsuitedTJQK != null;
+            holds = DefaultHolds;
+            return false;
         }
 
         public bool GetLowPair(out bool[] holds)
         {
-            Subhand? subhandLowPair = null;
             foreach (Subhand subhand in this.TwoCardCombos.Value)
             {
                 if (subhand.IsLowPair())
                 {
-                    subhandLowPair = subhand;
-                    break;
+                    holds = subhand.Holds;
+                    return true;
                 }
             }
 
-            holds = subhandLowPair != null ? subhandLowPair.Holds : DefaultHolds;
-            return subhandLowPair != null;
+            holds = DefaultHolds;
+            return false;
         }
 
         public bool Get4ToOS(out bool[] holds)
         {
-            Subhand? subhand4ToOS = null;
             foreach (Subhand subhand in this.FourCardCombos.Value)
             {
                 if (subhand.IsNToOutideStraight())
                 {
-                    subhand4ToOS = subhand;
-                    break;
+                    holds = subhand.Holds;
+                    return true;
                 }
             }
 
-            holds = subhand4ToOS != null ? subhand4ToOS.Holds : DefaultHolds;
-            return subhand4ToOS != null;
+            holds = DefaultHolds;
+            return false;
         }
 
         public bool GetUnsuitedTwoRanks(out bool[] holds, Rank r1, Rank r2)
         {
-            Subhand? subhandUnsuitedRanks = null;
             foreach (Subhand subhand in this.TwoCardCombos.Value)
             {
                 if (subhand.IsUnsuitedRanks(r1, r2))
                 {
-                    subhandUnsuitedRanks = subhand;
-                    break;
+                    holds = subhand.Holds;
+                    return true;
                 }
             }
 
-            holds = subhandUnsuitedRanks != null ? subhandUnsuitedRanks.Holds : DefaultHolds;
-            return subhandUnsuitedRanks != null;
+            holds = DefaultHolds;
+            return false;
         }
 
         public bool GetSuitedTwoRanks(out bool[] holds, out int suit, Rank r1, Rank r2)
         {
-            suit = -1;
-            Subhand? subhandSuitedRanks = null;
             foreach (Subhand subhand in this.TwoCardCombos.Value)
             {
                 if (subhand.IsSuitedRanks(out suit, r1, r2))
                 {
-                    subhandSuitedRanks = subhand;
-                    break;
+                    holds = subhand.Holds;
+                    return true;
                 }
             }
 
-            holds = subhandSuitedRanks != null ? subhandSuitedRanks.Holds : DefaultHolds;
-            return subhandSuitedRanks != null;
+            suit = -1;
+            holds = DefaultHolds;
+            return false;
         }
 
         public bool GetUnsuitedThreeRanks(out bool[] holds, Rank r1, Rank r2, Rank r3)
         {
-            Subhand? subhandSuitedRanks = null;
             foreach (Subhand subhand in this.ThreeCardCombos.Value)
             {
                 if (subhand.IsUnsuitedRanks(r1, r2, r3))
                 {
-                    subhandSuitedRanks = subhand;
-                    break;
+                    holds = subhand.Holds;
+                    return true;
                 }
             }
 
-            holds = subhandSuitedRanks != null ? subhandSuitedRanks.Holds : DefaultHolds;
-            return subhandSuitedRanks != null;
+            holds = DefaultHolds;
+            return false;
         }
 
         public bool GetSingleRank(out bool[] holds, Rank r1)
         {
-            Subhand? subhandSingleRank = null;
             foreach (Subhand subhand in this.Singles.Value)
             {
                 if (subhand.Cards[0].Rank == r1)
                 {
-                    subhandSingleRank = subhand;
-                    break;
+                    holds = subhand.Holds;
+                    return true;
                 }
             }
 
-            holds = subhandSingleRank != null ? subhandSingleRank.Holds : DefaultHolds;
-            return subhandSingleRank != null;
+            holds = DefaultHolds;
+            return false;
         }
 
         public bool Get4ToIS(out bool[] holds, int highCardTarget)
         {
-            Subhand? subhand4ToIS4HC = null;
             foreach (Subhand subhand in this.FourCardCombos.Value)
             {
                 if (subhand.IsNToInsideStraight(highCardTarget))
                 {
-                    subhand4ToIS4HC = subhand;
-                    break;
+                    holds = subhand.Holds;
+                    return true;
                 }
             }
 
-            holds = subhand4ToIS4HC != null ? subhand4ToIS4HC.Holds : DefaultHolds;
-            return subhand4ToIS4HC != null;
+            holds = DefaultHolds;
+            return false;
         }
 
         // Begin protected helper functions Section.

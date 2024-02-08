@@ -137,16 +137,19 @@ while (true)
         }
     }
 
-    ConsoleHelper.WriteLine(string.Join(" ", cards), mode);
+    if (mode != GameMode.Evaluation)
+    {
+        ConsoleHelper.WriteLine(string.Join(" ", cards), mode);
 
-    var handScore = Card.EvalHand(new Hand(cards.ToArray()));
-    ConsoleHelper.WriteLine(handScore.ToString(), mode);
+        var handScore = Card.EvalHand(new Hand(cards.ToArray()));
+        ConsoleHelper.WriteLine(handScore.ToString(), mode);
 
-    int count;
-    if (evalHandCounts.TryGetValue(handScore, out count))
-        evalHandCounts[handScore] = count + 1;
-    else
-        evalHandCounts[handScore] = 1;
+        int count;
+        if (evalHandCounts.TryGetValue(handScore, out count))
+            evalHandCounts[handScore] = count + 1;
+        else
+            evalHandCounts[handScore] = 1;
+    }
 
     if (itrCount % 1_000_000 == 0)
     {
